@@ -1,0 +1,28 @@
+<%- include("part/header")  %>
+
+
+<div class="container">
+
+    <form class="" action="/hero/update" method="post">
+        <div class="row g-1">
+            <h2 class="mt-5">
+                <%= hero.title %>
+            </h2>
+            <input type="text" hidden name="id" value="<%= hero.data[0].id %>" />
+            <div class="col-md-3">
+                <input type="text" name="name" class="form-control" value="<%= hero.data[0].name %>">
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="role" class="form-control" value="<%= hero.data[0].role %>">
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="skill" class="form-control" value="<%= hero.data[0].skill %>">
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary" type="submit" onclick="alert('Hero Berhasil diubah')">update</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<%- include ("part/footer") %>

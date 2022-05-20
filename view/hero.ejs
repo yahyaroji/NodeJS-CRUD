@@ -1,0 +1,78 @@
+<%- include('part/header') %>
+<%- include('part/nav') %>
+
+<div class="container mt-3">
+    <div class="row text-center justify-content-center">
+        <div class="col-md-8 ">
+            <h2>
+                <%= heroes.title %>
+            </h2>
+        </div>
+    </div>
+</div>
+
+<!-- Data Tampil -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Skill</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <% for (let i = 0; i < heroes.data.length; i++) { %>
+                    <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%= heroes.data[i].name %></td>
+                        <td><%= heroes.data[i].role %></td>
+                        <td><%= heroes.data[i].skill %></td>
+
+
+                        <form action="/hero/remove" method="post">
+                            <td>
+                                <a class="btn badge rounded-pill text-bg-warning"
+                                    href="/hero/<%= heroes.data[i].id %>">edit</a>
+                                <input type="text" hidden name="id" value="<%= heroes.data[i].id %>" />
+                                <button type="submit" onclick="alert('Hero Berhasil Dihapus')"
+                                    class="btn badge rounded-pill text-bg-danger">hapus</button>
+
+                            </td>
+                        </form>
+                    </tr>
+                </tbody>
+                <% } %>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Form tambah -->
+<div class="container mt-5">
+    <h2 class="">TAMBAHKAN HERO</h2>
+
+
+    <form class="contact-form" action="/hero/add" method="post">
+        <div class="col-md-3">
+            <input type="text" name="name" class="form-control" placeholder="isi nama hero" />
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="role" class="form-control" placeholder="isi role" />
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="skill" class="form-control" placeholder="isi skill" />
+        </div>
+
+        <div class="">
+            <button type="submit" class="btn btn-success" onclick="alert('Hero Berhasil Ditambahkan')">Tambah</button>
+        </div>
+    </form>
+
+
+
+    <%- include('part/footer') %>
