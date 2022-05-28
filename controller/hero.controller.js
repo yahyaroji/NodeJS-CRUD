@@ -17,7 +17,7 @@ router.get("/:id", (request, response) => {
 router.post("/update", (request, response) => {
   const data = {
     id: request.body.id,
-    name: request.body.hero,
+    //name: request.body.name,
     role: request.body.role,
     skill: request.body.skill,
   };
